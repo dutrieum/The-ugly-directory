@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Villager{% endblock %}
+
+{% block body %}
+    <h1>Create new Villager</h1>
+
+    {{ include('villager/_form.html.twig') }}
+
+    <a href="{{ path('app_villager_index') }}">back to list</a>
+{% endblock %}
