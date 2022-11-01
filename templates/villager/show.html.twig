@@ -26,6 +26,7 @@
             <tr>
                 <th>Image_url</th>
                 <td>{{ villager.imageUrl }}</td>
+                <img src="{{ asset('/images/' ~ villager.imageUrl) }}" alt="" />
             </tr>
         </tbody>
     </table>
