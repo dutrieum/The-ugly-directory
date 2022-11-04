@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/villager')]
 class VillagerController extends AbstractController
@@ -21,6 +22,7 @@ class VillagerController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/new', name: 'app_villager_new', methods: ['GET', 'POST'])]
     public function new(Request $request, VillagerRepository $villagerRepository): Response
     {
@@ -66,6 +68,7 @@ class VillagerController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_villager_delete', methods: ['POST'])]
     public function delete(Request $request, Villager $villager, VillagerRepository $villagerRepository): Response
     {
