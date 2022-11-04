@@ -50,6 +50,7 @@ class VillagerController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/edit', name: 'app_villager_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Villager $villager, VillagerRepository $villagerRepository): Response
     {

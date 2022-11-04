@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\VillagerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: VillagerRepository::class)]
 class Villager
@@ -13,9 +14,11 @@ class Villager
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 100)]
     private ?string $name = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 150)]
     private ?string $type = null;
 
@@ -23,9 +26,12 @@ class Villager
     #[ORM\JoinColumn(nullable: false)]
     private ?Personnality $personnality = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Positive]
     #[ORM\Column]
     private ?int $ugliness = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
     private ?string $image_url = null;
 
