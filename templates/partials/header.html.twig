@@ -1,0 +1,17 @@
+<header>
+    <div class="">
+        <div class="">
+            <a href="">
+                <img src="{{ asset('/images/logo.svg') }}" alt="Logo" />
+            </a>
+        </div>
+        <div class="">
+            <a href="">Villagers</a>
+            {% if is_granted('ROLE_USER') %}
+                <a href="">Logout</a>
+            {% else %}
+                <a href="">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
