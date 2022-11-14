@@ -9,8 +9,8 @@
 
 @font-face {
     font-family: 'Arvo';
-    src: url('../fonts/Arvo.woff2') format('woff2'),
-        url('../fonts/Arvo.woff') format('woff');
+    src: url('../fonts/Arvo-Regular.woff') format('woff2'),
+        url('../fonts/Arvo-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -32,4 +32,16 @@
     font-weight: 600;
     font-style: normal;
     font-display: swap;
+}
+
+.font-heading-1 {
+    @apply font-serif text-48 leading-[120%];
+}
+
+.font-heading-2 {
+    @apply font-sans font-semibold text-36 leading-[120%];
+}
+
+.cta {
+    @apply font-sans text-18 font-semibold bg-dark-green py-3 px-12 text-white rounded-full;
 }

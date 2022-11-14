@@ -3,18 +3,25 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/mathildedutrieux/Documents/Workspace-bdii-one/the-ugly-directory/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/mathildedutrieux/Documents/Workspace-bdii-one/the-ugly-directory/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+<div class="homepage">
+    <div class="flex" style="height: calc(100vh - 80px);">
+        <div class="w-1/2 bg-no-repeat bg-cover bg-center" style="background-image: url({{ asset('/images/confetti.png') }});">
+            <div class="py-32 pl-24 pr-10 h-full flex flex-col items-start justify-center">
+                <h1 class="font-heading-1 mb-12">The ugliest villagers of Animal Crossing.</h1>
+                <a href="{{ path("app_villager_index") }}" class="cta">Vote here !</a>
+            </div>
+        </div>
+        <div class="w-1/2 relative">
+            <div class="w-full h-full bg-black opacity-20 absolute top-0 left-0 right-0 bottom-0"></div>
+            <img src="{{ asset('/images/heading.jpeg') }}" class="h-full object-cover" alt="">
+        </div>
+    </div>
+    <div class="pt-32 px-32 pb-36 bg-cover bg-center" style="background-image: url({{ asset('/images/leaves.png') }});">
+        <div class="bg-white px-32 py-10 mx-40 text-center" style="border-radius: 65px;">
+            <h2 class="font-heading-2 mb-4">Concept</h2>
+            <p class="mb-8 font-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <a href="{{ path("app_villager_new") }}" class="cta">Add yours</a>
+        </div>
+    </div>
 </div>
 {% endblock %}
