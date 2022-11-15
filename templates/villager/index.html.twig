@@ -1,11 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Villager index{% endblock %}
+{% block title %}ACNH Villagers - List{% endblock %}
 
 {% block body %}
-    <h1>Villager index</h1>
+<div class="archive text-center py-12 px-20">
+    <h1 class="font-heading-1 mb-14">All the uglies</h1>
+    <div class="grid grid-cols-3 gap-[45px]">
+        {% for villager in villagers %}
+            <a href="{{ path('app_villager_show', {'id': villager.id }) }}">
+                <div class="bg-light-green text-white text-center px-4 pt-8 pb-6" style="border-radius: 65px;">
+                    <img src="{{ asset('/images/' ~ villager.imageUrl) }}" alt="Picture of the villager" style="height: 240px; margin: auto;" />
+                    <p class="mt-4" style="font-size: 24px;">{{ villager.name }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
 
-    <table class="table">
+    {# <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -37,5 +49,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_villager_new') }}">Create new</a>
+    <a href="{{ path('app_villager_new') }}">Create new</a> #}
 {% endblock %}
