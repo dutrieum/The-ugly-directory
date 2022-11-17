@@ -1,0 +1,21 @@
+form label {
+    @apply text-white;
+    font-size: 24px;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+    @apply bg-brown rounded-full text-white py-[16px] px-[16px] w-full;
+    outline: none;
+    margin-bottom: 1rem;
+}
+
+form button[type="submit"] {
+    @apply bg-brown rounded-full text-white py-[12px] px-[32px] m-auto mt-6;
+    font-size: 20px;
+    display: block;
+}

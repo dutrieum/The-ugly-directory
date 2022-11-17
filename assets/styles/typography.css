@@ -35,7 +35,7 @@
 }
 
 .font-heading-1 {
-    @apply font-serif text-72 leading-[120%];
+    @apply font-serif text-60 leading-[120%];
 }
 
 .font-heading-2 {
