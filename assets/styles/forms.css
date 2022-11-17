@@ -24,3 +24,13 @@ label[for=registration_form_agreeTerms] {
     display: inline;
     margin-right: 1rem;
 }
+
+.admin_only a, .admin_only button {
+    @apply bg-brown rounded-full text-white py-[10px] px-[28px];
+    font-size: 16px;
+    display: block;
+}
+
+.admin_only button {
+    margin-left: 1rem;
+}

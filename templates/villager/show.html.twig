@@ -19,6 +19,13 @@
             <p style="font-size: 18px;">Type : {{ villager.type }}</p>
             <p style="font-size: 18px;">Personality : {{ villager.personnality }}</p>
             <p style="font-size: 18px;">Level of ugliness : {{ villager.ugliness }}</p>
+            {% set url = app.request.attributes.get('_route') %}
+            {% if is_granted('ROLE_ADMIN') and 'villager' in url %}
+                <div class="flex admin_only mt-6">
+                    <a href="{{ path('app_villager_edit', {'id': villager.id}) }}">Edit</a>
+                    {{ include('villager/_delete_form.html.twig') }}
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>

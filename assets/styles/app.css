@@ -5,3 +5,8 @@
 body {
     @apply text-brown bg-white;
 }
+
+.alert {
+    @apply text-white py-4 pl-8;
+    background-color: tomato;
+}
