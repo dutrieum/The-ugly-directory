@@ -2,6 +2,8 @@
 
 Une plateforme faite pour partager avec la communauté des joueurs d’Animal Crossing sur un sujet plus que primordial lors du game-play : les habitants de notre île. Certains sont plus réputés que d’autres et ici, nous rendons hommage aux laissés pour compte.
 
+![image](https://user-images.githubusercontent.com/47384185/196681754-c1a3178b-65f9-43c9-b9ed-93a6dadd395a.png)
+
 ## Fonctionnalités
 
 Possibilité de consulter les habitants déjà listés et d’en ajouter de nouveaux, à condition d’avoir créé un compte. Seul l’administrateur a la possibilité de modifier ou de supprimer un habitant.
