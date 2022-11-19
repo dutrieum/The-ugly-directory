@@ -14,7 +14,7 @@ input[type="password"] {
     margin-bottom: 1rem;
 }
 
-form button[type="submit"] {
+form button[type="submit"], #villager_edit_button {
     @apply bg-brown rounded-full text-white py-[12px] px-[32px] m-auto mt-6;
     font-size: 20px;
     display: block;
@@ -33,4 +33,9 @@ label[for=registration_form_agreeTerms] {
 
 .admin_only button {
     margin-left: 1rem;
+}
+
+select#villager_personnality {
+    @apply bg-brown rounded-full text-white py-[16px] pl-[16px] pr-2;
+    border-right: 16px solid transparent;
 }
