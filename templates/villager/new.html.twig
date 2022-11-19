@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ACNH Villagers - New Villager{% endblock %}
+{% block title %}The ugly directory - New Villager{% endblock %}
 
 {% block body %}
     <a href="{{ path("app_villager_index") }}" class="text-dark-green px-8 py-2 ml-16 mt-10 flex items-center bg-light-green inline-flex" style="font-size: 18px; border-radius: 65px;">
@@ -10,7 +10,7 @@
         <p>Back to all villagers</p>
     </a>
 
-    <h1 class="font-heading-1 text-center mt-10 mb-16">Create new Villager</h1>
+    <h1 class="font-heading-1 text-center mt-10 mb-16">Add villager</h1>
 
     <div class="bg-light-green px-24 py-10 mx-40 mb-32" style="border-radius: 65px;">
         {{ include('villager/_form.html.twig') }}

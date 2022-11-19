@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ACNH Villagers - List{% endblock %}
+{% block title %}The ugly directory - Villagers{% endblock %}
 
 {% block body %}
 <div class="archive text-center py-12 px-20">
@@ -15,39 +15,6 @@
             </a>
         {% endfor %}
     </div>
+    <a href="{{ path('app_villager_new') }}" class="cta mt-8 inline-block">Add a new one</a>
 </div>
-
-    {# <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Ugliness</th>
-                <th>Image_url</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for villager in villagers %}
-            <tr>
-                <td>{{ villager.id }}</td>
-                <td>{{ villager.name }}</td>
-                <td>{{ villager.type }}</td>
-                <td>{{ villager.ugliness }}</td>
-                <td>{{ villager.imageUrl }}</td>
-                <td>
-                    <a href="{{ path('app_villager_show', {'id': villager.id}) }}">show</a>
-                    <a href="{{ path('app_villager_edit', {'id': villager.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_villager_new') }}">Create new</a> #}
 {% endblock %}
