@@ -2,7 +2,7 @@
 
 Une plateforme faite pour partager avec la communauté des joueurs d’Animal Crossing sur un sujet plus que primordial lors du game-play : les habitants de notre île. Certains sont plus réputés que d’autres et ici, nous rendons hommage aux laissés pour compte.
 
-![image](https://user-images.githubusercontent.com/47384185/196681754-c1a3178b-65f9-43c9-b9ed-93a6dadd395a.png)
+![the-ugly-directory-screen](https://user-images.githubusercontent.com/72490689/202869228-1a9d7895-09ca-4852-96c5-ccefa94ce27a.png)
 
 ## Fonctionnalités
 
