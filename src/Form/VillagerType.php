@@ -6,6 +6,8 @@ use App\Entity\Villager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class VillagerType extends AbstractType
 {
@@ -15,8 +17,18 @@ class VillagerType extends AbstractType
             ->add('name')
             ->add('type')
             ->add('ugliness')
-            ->add('image_url')
             ->add('personnality')
+            ->add('image_url', FileType::class, [
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PNG image.',
+                    ])
+                ],
+                'data_class' => null,
+            ])
         ;
     }
 

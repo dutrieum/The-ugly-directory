@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 #[Route('/villager')]
 class VillagerController extends AbstractController
@@ -24,13 +26,32 @@ class VillagerController extends AbstractController
 
     #[IsGranted('ROLE_USER')]
     #[Route('/new', name: 'app_villager_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, VillagerRepository $villagerRepository): Response
+    public function new(Request $request, VillagerRepository $villagerRepository, SluggerInterface $slugger): Response
     {
         $villager = new Villager();
         $form = $this->createForm(VillagerType::class, $villager);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image_url')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $villager->setImageUrl($newFilename);
+            }
+
             $villagerRepository->save($villager, true);
 
             return $this->redirectToRoute('app_villager_index', [], Response::HTTP_SEE_OTHER);

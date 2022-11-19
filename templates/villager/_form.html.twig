@@ -1,4 +1,33 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <label for="villager_name">Name</label>
+    {{ form_widget(form.name) }}
+    <label for="villager_name">Type</label>
+    {{ form_widget(form.type) }}
+    <label for="villager_name">Ugliness</label>
+    {{ form_widget(form.ugliness) }}
+    <label for="villager_name">Personnality</label>
+    {{ form_widget(form.personnality) }}
+    <div class="input-file-container">
+        <label for="villager_image_url">Add image file</label>
+        <div class="text-[16px] inline-block text-dark-green text-right">{{ form_errors(form.image_url) }}</div>
+        <div class="hidden">{{ form_widget(form.image_url) }}</div>
+    </div>
     <button id="villager_edit_button" class="btn mt-4">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+
+<script>
+    const input = document.querySelector('#villager_image_url');
+    const label = document.querySelector('.input-file-container label');
+    const defaultLabelText = 'Add image file';
+
+    input.addEventListener('change', updateLabel);
+
+    function updateLabel(e) {
+        const fileName = e.target.value.split('\\').pop();
+        if (fileName) {
+            label.textContent = fileName;
+        } else {
+            label.textContent = defaultLabelText;
+        }
+    }
+</script>

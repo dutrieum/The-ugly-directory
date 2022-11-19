@@ -39,3 +39,7 @@ select#villager_personnality {
     @apply bg-brown rounded-full text-white py-[16px] pl-[16px] pr-2;
     border-right: 16px solid transparent;
 }
+
+.input-file-container>label {
+    @apply cursor-copy bg-brown rounded-full text-white py-[13px] px-[18px] mt-6 text-18 w-fit;
+}
