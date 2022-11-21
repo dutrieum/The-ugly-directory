@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[Route('/villager')]
 class VillagerController extends AbstractController
@@ -73,12 +74,37 @@ class VillagerController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/edit', name: 'app_villager_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Villager $villager, VillagerRepository $villagerRepository): Response
+    public function edit(Request $request, Villager $villager, VillagerRepository $villagerRepository, SluggerInterface $slugger): Response
     {
+        $imageFileName = $villager->getImageUrl();
+        $villager->setImageUrl(
+            new File($this->getParameter('images_directory').'/'.$villager->getImageUrl())
+        );
+
         $form = $this->createForm(VillagerType::class, $villager);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image_url')->getData();
+
+            if ($imageFile !== null) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move (
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+                $villager->setImageUrl($newFilename);
+            } else {
+                $villager->setImageUrl($imageFileName);
+            }
+
             $villagerRepository->save($villager, true);
 
             return $this->redirectToRoute('app_villager_index', [], Response::HTTP_SEE_OTHER);
